@@ -1,193 +1,287 @@
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
 
-// font-family: "Arial", Sans-serif;
-// Azul oscuro	Principal	#003a63	(0, 58, 99)
-// Hover
-// Verde claro	Acento en logo?	#6fbf41	(111, 191, 65)
-// Hover #5cae36
+// backend --------------------------------------------------------------------------------------------------------------------------------------------------------/
 
-import { createRoot } from "react-dom/client";
-import { useState } from 'react';
+// Datos de métricas según la página original
+const metrics = [
+  { value: "+2,620,000", label: "Ausschreibungen" },
+  { value: "+684,000", label: "Leistungsverzeichnisse" },
+  { value: "+354,000", label: "Auftragsvergaben" },
+  { value: "+82,000", label: "Auftragnehmer" },
+  { value: "+8,000", label: "Gewerke" },
+  { value: "+24", label: "Jahre an Erfahrung" },
+];
 
+// Datos de la sección "Was bieten wir Ihnen?"
+const features = [
+  {
+    title: "Ausschreibungsrecherche",
+    description:
+      "Durch ein personalisiertes Suchprofil erhalten Sie für Sie zugeschnittene Informationen über Ausschreibungen und vergebene Aufträge.",
+    points: [
+      "Individualisierte Suche",
+      "Öffentliche Ausschreibungen VOB/VOL/VOF",
+      "Private Ausschreibungen",
+    ],
+  },
+  {
+    title: "Hoher Detaillierungsgrad",
+    description:
+      "Wir recherchieren Ausschreibungen in beispielloser Präzision mit einzigartigem 3-Wege-Filter.",
+    points: [
+      "Ca. 8000 Gewerkeprofile",
+      "100% Trefferquote",
+      "Themengerechte Aufbereitung",
+    ],
+  },
+  {
+    title: "Enorme Zeitersparnis",
+    description:
+      "Sie sparen wertvolle Arbeitszeit und haben dadurch mehr Freiraum für andere wichtige Dinge.",
+    points: [
+      "Direkter Zugriff auf Vergabeunterlagen",
+      "Präsentation von Referenzen",
+      "Benachrichtigung bei neuen Projekten",
+    ],
+  },
+];
 
-function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  
-  return (
-    <header className="header">
-      <div className="cont-header">
-        <img src="assets\images\svg\Logo-downloaded.png" alt="Logo Inlocon" className="logo" />
-       
-        {/* Desktop Navigation */}
-        <nav className="desktop-nav">
-          <ul className="nav">
-            <li><a href="#portals">Portalen</a></li>
-            <li><a href="#enterprice">Unternehme</a></li>
-            <li><a href="#blog">Blog</a></li>
-          </ul>
-        </nav>
+// Daten für "Unsere Portale" basierend en la página antigua
+const portals = [
+  {
+    title: "Bauportal Deutschland",
+    url: "https://www.bauportal-deutschland.de",
+  },
+  { title: "Straßenbauportal", url: "https://www.strassenbauportal.de" },
+  { title: "Cleanerportal", url: "https://www.cleanerportal.de" },
+  {
+    title: "Beschaffungsmarkt Office",
+    url: "https://www.beschaffungsmarkt-office.de",
+  },
+  { title: "Container Modulbau", url: "https://www.container-modulbau.de" },
+  {
+    title: "Beschaffungsmarkt Fahrzeuge",
+    url: "https://www.beschaffungsmarkt-fahrzeuge.de",
+  },
+  {
+    title: "Energieausschreibungen",
+    url: "https://www.energieausschreibungen.eu",
+  },
+  {
+    title: "Beschaffungsmarkt Gesundheit",
+    url: "https://www.beschaffungsmarkt-gesundheit.de",
+  },
+  {
+    title: "Schienenverkehrsportal",
+    url: "https://www.schienenverkehrsportal.de",
+  },
+  { title: "EE-Portal", url: "https://www.ee-portal.eu" },
+];
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="menu-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Abrir menú"
-        >
-         <img src="assets\icons\casa.png" alt="icon" className="homeIcon" height="45px" />
-        </button>
+// Logos y nombres de socios reales de la antigua página
+// Datos de socios con rutas a los logos según la página original
+const partners = [
+  { name: "Strabag", logo: "/assets/images/partners/strabag.png" },
+  { name: "Deutsche Bahn", logo: "/assets/images/partners/deutsche-bahn.png" },
+  { name: "Schindler", logo: "/assets/images/partners/schindler.png" },
+  { name: "EnBW", logo: "/assets/images/partners/enbw.png" },
+  { name: "Siemens", logo: "/assets/images/partners/siemens.png" },
+  { name: "Wisag", logo: "/assets/images/partners/wisag.png" },
+  { name: "Zeppelin", logo: "/assets/images/partners/zeppelin.png" },
+  { name: "Magirus", logo: "/assets/images/partners/magirus.png" },
+  { name: "Freqcon", logo: "/assets/images/partners/freqcon.png" },
+  { name: "Knauf", logo: "/assets/images/partners/knauf.png" },
+  { name: "Bilfinger", logo: "/assets/images/partners/bilfinger.png" },
+  { name: "Vattenfall", logo: "/assets/images/partners/vattenfall.png" },
+  { name: "RWE", logo: "/assets/images/partners/rwe.png" },
+  { name: "Thyssenkrupp", logo: "/assets/images/partners/thyssenkrupp.png" },
+  { name: "BASF", logo: "/assets/images/partners/basf.png" },
+  { name: "Bayer", logo: "/assets/images/partners/bayer.png" },
+  { name: "Daimler", logo: "/assets/images/partners/daimler.png" },
+  { name: "Volkswagen", logo: "/assets/images/partners/volkswagen.png" },
+  { name: "BMW", logo: "/assets/images/partners/bmw.png" },
+  { name: "Continental", logo: "/assets/images/partners/continental.png" },
+  {
+    name: "Deutsche Telekom",
+    logo: "/assets/images/partners/deutsche-telekom.png",
+  },
+  { name: "SAP", logo: "/assets/images/partners/sap.png" },
+  { name: "Bosch", logo: "/assets/images/partners/bosch.png" },
+  { name: "Lufthansa", logo: "/assets/images/partners/lufthansa.png" },
+  { name: "Merck", logo: "/assets/images/partners/merck.png" },
+];
 
-        {/* Mobile Navigation */}
-        <nav className={`mobile-nav ${menuOpen ? "open" : ""}`}>
-          <ul className="nav">
-            <li><a href="#portals">Portalen</a></li>
-            <li><a href="#enterprice">Unternehme</a></li>
-            <li><a href="#blog">Blog</a></li>
-          </ul>
-        </nav>
+// backend --------------------------------------------------------------------------------------------------------------------------------------------------------/
 
-        {/* Right section - Desktop/Tablet */}
-        <div className='no-log_section'>
-          <button
-            className="test-button"
-            onClick={() => console.log("onClick")}
-            aria-label="free try">
-            Kostenlos testen
-          </button>
-          <a href="#login" className='login'>Anmelden</a>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function FindSection() {
-  const [searchValue, setSearchValue] = useState("");
-
+function App() {
+  const [term, setTerm] = useState("");
   const handleSearch = (e) => {
     e.preventDefault();
-    alert(`Buscando: ${searchValue}`);
+    console.log("Buscando:", term);
   };
 
   return (
-    <section className="findSection">
-      <div>
-        <form className="search-form" onSubmit={handleSearch}>
-          <input
-            type="text"
-            placeholder="Buscar licitaciones..."
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+    <>
+      {/* Header */}
+      <header className="header">
+        <div className="header__inner">
+          <img
+            src="assets/images/svg/Logo-downloaded.png"
+            alt="Logo Inlocon"
+            className="header__logo"
           />
-          <button type="submit">Buscar</button>
-        </form>
-        <p className="findSection-subtext">Encuentra oportunidades públicas y privadas para tu empresa</p>
-      </div>
-    </section>
-  );
-}
-
-function OurPortals() {
-  const portals = [
-    { name: "Ausschreibungen", description: "VOB/VOL/VOF Ausschreibungen" },
-    { name: "Aufträge", description: "Vergebene Aufträge recherchieren" },
-    { name: "Subunternehmer", description: "Partner und Kontakte finden" },
-    { name: "Leistungsverzeichnisse", description: "Direkter Download verfügbar" }
-  ];
-
-  return (
-    <section className="our-portals">
-      <div className="container">
-        <h2>Unsere Portale</h2>
-        <p className="portals-intro">Durch unsere mittlerweile 24jährige Erfahrung haben wir zehn spezialisierte Portale etabliert</p>
-        <div className="portals-grid">
-          {portals.map((portal, index) => (
-            <div key={index} className="portal-card">
-              <h3>{portal.name}</h3>
-              <p>{portal.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhatWeOffer() {
-  const features = [
-    {
-      title: "Ausschreibungsrecherche",
-      description: "Durch ein personalisiertes Suchprofil erhalten Sie für Sie zugeschnittene Informationen über Ausschreibungen und vergebene Aufträge.",
-      points: ["Individualisierte Suche", "Öffentliche Ausschreibungen VOB/VOL/VOF", "Private Ausschreibungen"]
-    },
-    {
-      title: "Hoher Detaillierungsgrad", 
-      description: "Wir recherchieren Ausschreibungen in beispielloser Präzision mit einzigartigem 3-Wege-Filter.",
-      points: ["Ca. 8000 Gewerkeprofile", "100% Trefferquote", "Themengerechte Aufbereitung"]
-    },
-    {
-      title: "Enorme Zeitersparnis",
-      description: "Sie sparen wertvolle Arbeitszeit und haben dadurch mehr Freiraum für andere wichtige Dinge.",
-      points: ["Direkter Zugriff auf Vergabeunterlagen", "Präsentation von Referenzen", "Benachrichtigung bei neuen Projekten"]
-    }
-  ];
-
-  return (
-    <section className="what-we-offer">
-      <div className="container">
-        <h2>Was bieten wir Ihnen?</h2>
-        <div className="features-grid">
-          {features.map((feature, index) => (
-            <div key={index} className="feature-card">
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
-              <ul>
-                {feature.points.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Partners() {
-  const partners = [
-    "Strabag", "Deutsche Bahn", "Schindler", "EnBW", "Siemens", 
-    "Wisag", "Zeppelin", "Magirus", "Freqcon", "Knauf"
-  ];
-
-  return (
-    <section className="partners">
-      <div className="container">
-        <h2>Unsere Partner</h2>
-        <div className="partners-grid">
-          {partners.map((partner, index) => (
-            <div key={index} className="partner-logo">
-              <div className="logo-placeholder">{partner}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-content">
-          <div className="footer-section">
-            <h3>Kontakt</h3>
-            <p>Inlocon AG<br/>
-            Erich-Zeigner-Allee 36<br/>
-            04229 Leipzig<br/>
-            Tel.: 0341/ 253 479 111</p>
+          <nav className="header__nav header__nav--desktop">
+            <ul className="header__nav-list">
+              <li>
+                <a href="#portals">Portalen</a>
+              </li>
+              <li>
+                <a href="#enterprise">Unternehmen</a>
+              </li>
+              <li>
+                <a href="#blog">Blog</a>
+              </li>
+            </ul>
+          </nav>
+          <button
+            className="header__toggle"
+            aria-label="Toggle Nav"
+            onClick={() => document.body.classList.toggle("mobile-open")}
+          >
+            <img src="assets/icons/casa.png" alt="Menu" />
+          </button>
+          <nav className="header__nav header__nav--mobile">
+            <ul className="header__nav-list">
+              <li>
+                <a href="#portals">Portalen</a>
+              </li>
+              <li>
+                <a href="#enterprise">Unternehmen</a>
+              </li>
+              <li>
+                <a href="#blog">Blog</a>
+              </li>
+            </ul>
+          </nav>
+          <div className="header__actions">
+            <button className="header__action header__action--primary">
+              Kostenlos testen
+            </button>
+            <a href="#login" className="header__action header__action--outline">
+              Anmelden
+            </a>
           </div>
-          <div className="footer-section">
+        </div>
+      </header>
+
+      {/* Search Section */}
+      <section className="search">
+        <form className="search__form" onSubmit={handleSearch}>
+          <input
+            className="search__input"
+            type="text"
+            placeholder="Suchbegriff eingeben..."
+            value={term}
+            onChange={(e) => setTerm(e.target.value)}
+          />
+          <button className="search__button" type="submit">
+            Suche
+          </button>
+        </form>
+        <p className="search__subtitle">
+          Öffentliche Ausschreibungen, Aufträge & Geschäftskontakte. Alles aus
+          einer Quelle!
+        </p>
+      </section>
+
+      {/* Unsere Portale */}
+      <section className="portals" id="portals">
+        <div className="container">
+          <h2 className="portals__heading">Unsere Portale</h2>
+          <p className="portals__description">
+            Wir bieten spezialisierte Portale für verschiedene Branchen und
+            Regionen.
+          </p>
+          <div className="portals__grid">
+            {portals.map((portal, index) => (
+              <div key={index} className="portals__card">
+                <a href={portal.url} className="portals__card-link">
+                  <h3 className="portals__card-title">{portal.title}</h3>
+                  <p className="portals__card-desc">{portal.description}</p>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Was bieten wir Ihnen? */}
+      <section className="offer">
+        <div className="container">
+          <h2 className="offer__heading">Was bieten wir Ihnen?</h2>
+          <div className="offer__grid">
+            {features.map((feature, index) => (
+              <div key={index} className="offer__card">
+                <h3>{feature.title}</h3>
+                <p>{feature.description}</p>
+                <ul className="offer__list">
+                  {feature.points.map((point, i) => (
+                    <li key={i} className="offer__list-item">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Metrics Section */}
+      <section className="metrics">
+        <div className="container metrics__inner">
+          <div className="metrics__grid">
+            {metrics.map((m, i) => (
+              <div key={i} className="metrics__item">
+                <span className="metrics__value">{m.value}</span>
+                <span className="metrics__label">{m.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Unsere Partner */}
+      <section className="partners">
+        <div className="container">
+          <h2 className="partners__heading">Unsere Partner</h2>
+          <div className="partners__grid">
+            {partners.map((partner, index) => (
+              <div key={index} className="partners__logo">
+                <img src={partner.logo} alt={partner.name} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container footer__inner">
+          <div className="footer__col">
+            <h3>Kontakt</h3>
+            <p>
+              Inlocon AG
+              <br />
+              Erich-Zeigner-Allee 36
+              <br />
+              04229 Leipzig
+              <br />
+              Tel.: 0341/253479111
+            </p>
+          </div>
+          <div className="footer__col">
             <h3>Services</h3>
             <ul>
               <li>Ausschreibungsrecherche</li>
@@ -195,38 +289,13 @@ function Footer() {
               <li>Subunternehmer finden</li>
             </ul>
           </div>
-          <div className="footer-section">
-            <h3>Rechtliches</h3>
-            <ul>
-              <li><a href="#impressum">Impressum</a></li>
-              <li><a href="#datenschutz">Datenschutz</a></li>
-              <li><a href="#agb">AGB</a></li>
-            </ul>
-          </div>
         </div>
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Inlocon AG. Alle Rechte vorbehalten.</p>
+        <div className="footer__bottom">
+          © {new Date().getFullYear()} Inlocon AG. Alle Rechte vorbehalten.
         </div>
-      </div>
-    </footer>
-  );
-}
-
-function App() {
-  return (
-    <>
-      <Header />
-      <FindSection />
-      <OurPortals />
-      <Partners />
-      <WhatWeOffer />
-      <Footer />
+      </footer>
     </>
   );
 }
-
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(<App />);
 
 export default App;
