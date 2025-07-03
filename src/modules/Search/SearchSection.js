@@ -16,34 +16,31 @@ export const SearchSection = () => {
       {" "}
       <form className="search__form" onSubmit={handleSearch}>
         {" "}
-        <div className="search__main">
-          {" "}
-          <input
-            className="search__input"
-            type="text"
-            placeholder="Suchbegriff eingeben..."
-            value={term}
-            onChange={(e) => setTerm(e.target.value)}
-          />{" "}
-          <button className="search__button" type="submit">
+        {!showAdvanced ? (
+          <div className="search__main">
             {" "}
-            Suche{" "}
-          </button>{" "}
-        </div>{" "}
-        <div className="search__toggle">
-          {" "}
-          <button
-            type="button"
-            className="search__toggle-button"
-            onClick={() => setShowAdvanced(!showAdvanced)}
-          >
-            {" "}
-            {showAdvanced ? "Suchoptionen ausblenden" : "Weitere Suchoptionen"}
-          </button>{" "}
-        </div>{" "}
-        {showAdvanced && (
+            <input
+              className="search__input"
+              type="text"
+              placeholder="Suchbegriff eingeben..."
+              value={term}
+              onChange={(e) => setTerm(e.target.value)}
+            />{" "}
+            <button className="search__button" type="submit">
+              {" "}
+              Suchen{" "}
+            </button>{" "}
+          </div>
+        ) : (
           <div className="search__advanced">
             {" "}
+            <input
+              className="search__input"
+              type="text"
+              placeholder="Suchbegriff eingeben..."
+              value={term}
+              onChange={(e) => setTerm(e.target.value)}
+            />{" "}
             <div className="search__row">
               {" "}
               <div className="search__field">
@@ -81,8 +78,23 @@ export const SearchSection = () => {
                 </select>{" "}
               </div>{" "}
             </div>{" "}
+            <button className="search__button" type="submit">
+              {" "}
+              Suchen{" "}
+            </button>{" "}
           </div>
         )}
+        <div className="search__toggle">
+          {" "}
+          <button
+            type="button"
+            className="search__toggle-button"
+            onClick={() => setShowAdvanced(!showAdvanced)}
+          >
+            {" "}
+            {showAdvanced ? "Suchoptionen ausblenden" : "Weitere Suchoptionen"}
+          </button>{" "}
+        </div>{" "}
       </form>{" "}
       <p className="search__subtitle">
         {" "}

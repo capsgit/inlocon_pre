@@ -1,5 +1,3 @@
-import "./App.css";
-
 import { Header } from "./modules/Header/Header.js";
 import { SearchSection } from "./modules/Search/SearchSection.js";
 import { OffersSection } from "./modules/Offers/Offers.js";
@@ -13,7 +11,7 @@ function App() {
       <SearchSection />
       <OffersSection />
       <InfoSection />
-      {<Footer />}
+      <Footer />
     </>
   );
 }

@@ -11,13 +11,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1.5rem;
-  height: 80px;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .header__logo {
-  height: 80px;
+  height: 100px;
 }
 
 .header__nav--desktop {
@@ -56,6 +55,8 @@
   background: #6fbf41;
   color: #fff;
   border: none;
+  font-size: 1rem;
+  font-weight: bold;
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
@@ -130,7 +131,7 @@
   .header__logo {
     flex: 0 0 auto;
     order: 0;
-    height: 70px;
+    height: 80px;
     padding-left: 2rem;
   }
 
