@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 
+import { Header } from "./modules/Header/Header.js";
 // backend --------------------------------------------------------------------------------------------------------------------------------------------------------/
 
 // Datos de métricas según la página original
@@ -222,58 +223,7 @@ function App() {
 
   return (
     <>
-      {/* Header */}
-      <header className="header">
-        <div className="header__inner">
-          <img
-            src="assets/images/svg/Logo-downloaded.png"
-            alt="Logo Inlocon"
-            className="header__logo"
-          />
-          <nav className="header__nav header__nav--desktop">
-            <ul className="header__nav-list">
-              <li>
-                <a href="#portals">Portalen</a>
-              </li>
-              <li>
-                <a href="#enterprise">Unternehmen</a>
-              </li>
-              <li>
-                <a href="#blog">Blog</a>
-              </li>
-            </ul>
-          </nav>
-          <button
-            className="header__toggle"
-            aria-label="Toggle Nav"
-            onClick={() => document.body.classList.toggle("mobile-open")}
-          >
-            <img src="assets/icons/casa.png" alt="Menu" />
-          </button>
-          <nav className="header__nav header__nav--mobile">
-            <ul className="header__nav-list">
-              <li>
-                <a href="#portals">Portalen</a>
-              </li>
-              <li>
-                <a href="#enterprise">Unternehmen</a>
-              </li>
-              <li>
-                <a href="#blog">Blog</a>
-              </li>
-            </ul>
-          </nav>
-          <div className="header__actions">
-            <button className="header__action header__action--primary">
-              Kostenlos testen
-            </button>
-            <a href="#login" className="header__action header__action--outline">
-              Anmelden
-            </a>
-          </div>
-        </div>
-      </header>
-
+      {<Header />}
       {/* Search Section */}
       <section className="search">
         <form className="search__form" onSubmit={handleSearch}>
@@ -410,6 +360,7 @@ function App() {
         </div>
       </section>
 
+      {/* Info Section--------------------------------------------- */}
       {/* Unsere Portale */}
       <section className="portals" id="portals">
         <div className="container">
