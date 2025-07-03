@@ -13,94 +13,80 @@ export const SearchSection = () => {
 
   return (
     <section className="search">
-      {" "}
       <form className="search__form" onSubmit={handleSearch}>
-        {" "}
         {!showAdvanced ? (
           <div className="search__main">
-            {" "}
             <input
               className="search__input"
               type="text"
               placeholder="Suchbegriff eingeben..."
               value={term}
               onChange={(e) => setTerm(e.target.value)}
-            />{" "}
+            />
             <button className="search__button" type="submit">
-              {" "}
-              Suchen{" "}
-            </button>{" "}
+              Suchen
+            </button>
           </div>
         ) : (
           <div className="search__advanced">
-            {" "}
             <input
               className="search__input"
               type="text"
               placeholder="Suchbegriff eingeben..."
               value={term}
               onChange={(e) => setTerm(e.target.value)}
-            />{" "}
+            />
             <div className="search__row">
-              {" "}
               <div className="search__field">
-                {" "}
-                <label htmlFor="ort">Ort</label>{" "}
+                <label htmlFor="ort">Ort</label>
                 <input
                   id="ort"
-                  type="text"
                   className="search__input--small"
+                  type="text"
                   placeholder="PLZ oder Ort"
-                />{" "}
-              </div>{" "}
+                />
+              </div>
               <div className="search__field">
-                {" "}
-                <label htmlFor="auftraggeber">Auftraggeber</label>{" "}
+                <label htmlFor="auftraggeber">Auftraggeber</label>
                 <input
                   id="auftraggeber"
-                  type="text"
                   className="search__input--small"
+                  type="text"
                   placeholder="Name des Auftraggebers"
-                />{" "}
-              </div>{" "}
+                />
+              </div>
               <div className="search__field">
-                {" "}
-                <label htmlFor="plattform">Plattform</label>{" "}
+                <label htmlFor="plattform">Plattform</label>
                 <select id="plattform" className="search__select">
-                  {" "}
-                  <option value="">Alle Plattformen</option>{" "}
+                  <option value="">Alle Plattformen</option>
                   {portals.map((p, i) => (
                     <option key={i} value={p.title}>
-                      {" "}
                       {p.title}
                     </option>
                   ))}
-                </select>{" "}
-              </div>{" "}
-            </div>{" "}
+                </select>
+              </div>
+            </div>
             <button className="search__button" type="submit">
-              {" "}
-              Suchen{" "}
-            </button>{" "}
+              Suchen
+            </button>
           </div>
         )}
+
         <div className="search__toggle">
-          {" "}
           <button
             type="button"
             className="search__toggle-button"
-            onClick={() => setShowAdvanced(!showAdvanced)}
+            onClick={() => setShowAdvanced((prev) => !prev)}
           >
-            {" "}
             {showAdvanced ? "Suchoptionen ausblenden" : "Weitere Suchoptionen"}
-          </button>{" "}
-        </div>{" "}
-      </form>{" "}
+          </button>
+        </div>
+      </form>
       <p className="search__subtitle">
-        {" "}
-        Öffentliche Ausschreibungen, Aufträge & Geschäftskontakte. Alles aus
-        einer Quelle !{" "}
-      </p>{" "}
+        Öffentliche Ausschreibungen, Aufträge & Geschäftskontakte. Alles aus una
+        Quelle!
+      </p>
     </section>
   );
 };
