@@ -1,0 +1,62 @@
+/* —— Footer Section —— */
+.footer {
+    background: #003a63;
+    color: #fff;
+    padding: 4rem 0 2rem;
+}
+
+.footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.footer__col {
+    flex: 1 1 200px;
+}
+
+.footer__col h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.footer__col p,
+.footer__col li {
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+.footer__col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer__col ul li {
+    margin-bottom: .5rem;
+}
+
+.footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding-top: 1rem;
+    margin-top: 2rem;
+    font-size: .8rem;
+}
+
+@media (max-width:768px) {
+
+    .portals__grid,
+    .offer__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .partners__grid {
+        flex-direction: column;
+    }
+
+    .footer__inner {
+        flex-direction: column;
+        align-items: center;
+    }
+}
