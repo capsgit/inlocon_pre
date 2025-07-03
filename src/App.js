@@ -2,6 +2,7 @@ import "./App.css";
 
 import { Header } from "./modules/Header/Header.js";
 import { SearchSection } from "./modules/Search/SearchSection.js";
+import { OffersSection } from "./modules/Offers/Offers.js";
 
 // backend --------------------------------------------------------------------------------------------------------------------------------------------------------/
 
@@ -14,93 +15,7 @@ const metrics = [
   { value: "+8,000", label: "Gewerke" },
   { value: "+24", label: "Jahre an Erfahrung" },
 ];
-
-// Base de datos de ofertas públicas (sample de 10 ofertas)
-const offers = [
-  {
-    auftraggeber: "Stadt Leipzig",
-    LeistungText: "Straßenbau und Instandhaltung von Hauptverkehrsstraßen",
-    Ausführungsort: "Leipzig, Sachsen",
-    Ausführungsfrist: "2025-10-15",
-    Fristen: { Angebotsfrist: "2025-08-01", Bindefrist: "2026-01-15" },
-    type: "Bauleistungen",
-  },
-  {
-    auftraggeber: "Deutsche Bahn AG",
-    LeistungText: "Lieferung und Montage von Signaltechnik",
-    Ausführungsort: "Berlin",
-    Ausführungsfrist: "2025-12-01",
-    Fristen: { Angebotsfrist: "2025-09-15", Bindefrist: "2026-03-01" },
-    type: "Technische Ausrüstung",
-  },
-  {
-    auftraggeber: "Landkreis München",
-    LeistungText: "Planung und Bau von Radwegen",
-    Ausführungsort: "München, Bayern",
-    Ausführungsfrist: "2025-11-20",
-    Fristen: { Angebotsfrist: "2025-09-30", Bindefrist: "2026-02-20" },
-    type: "Planungsleistungen",
-  },
-  {
-    auftraggeber: "Universität Hamburg",
-    LeistungText: "Lieferung von Laborgeräten für Chemie",
-    Ausführungsort: "Hamburg",
-    Ausführungsfrist: "2025-09-10",
-    Fristen: { Angebotsfrist: "2025-07-25", Bindefrist: "2026-01-10" },
-    type: "Lieferleistungen",
-  },
-  {
-    auftraggeber: "Einwohnerstadt Köln",
-    LeistungText: "Reinigung und Pflege öffentlicher Grünanlagen",
-    Ausführungsort: "Köln, Nordrhein-Westfalen",
-    Ausführungsfrist: "2025-08-30",
-    Fristen: { Angebotsfrist: "2025-07-01", Bindefrist: "2025-12-31" },
-    type: "Facility Management",
-  },
-  {
-    auftraggeber: "Bundesministerium für Verkehr",
-    LeistungText: "Erstellung einer Machbarkeitsstudie Fernverkehr",
-    Ausführungsort: "Bonn",
-    Ausführungsfrist: "2025-10-05",
-    Fristen: { Angebotsfrist: "2025-08-10", Bindefrist: "2026-02-05" },
-    type: "Beratungsleistungen",
-  },
-  {
-    auftraggeber: "Stadt Frankfurt",
-    LeistungText: "Lieferung von Müllfahrzeugen mit Elektromotor",
-    Ausführungsort: "Frankfurt am Main",
-    Ausführungsfrist: "2025-09-25",
-    Fristen: { Angebotsfrist: "2025-08-01", Bindefrist: "2026-01-25" },
-    type: "Fahrzeugbeschaffung",
-  },
-  {
-    auftraggeber: "Land Hessen",
-    LeistungText: "Schulgebäudesanierung und Barrierefreiheit",
-    Ausführungsort: "Wiesbaden",
-    Ausführungsfrist: "2025-11-01",
-    Fristen: { Angebotsfrist: "2025-09-10", Bindefrist: "2026-04-01" },
-    type: "Bauleistungen",
-  },
-  {
-    auftraggeber: "Stadt Nürnberg",
-    LeistungText: "IT-Dienstleistungen für E-Government-Lösungen",
-    Ausführungsort: "Nürnberg, Bayern",
-    Ausführungsfrist: "2025-07-31",
-    Fristen: { Angebotsfrist: "2025-06-15", Bindefrist: "2025-12-31" },
-    type: "IT-Services",
-  },
-  {
-    auftraggeber: "Land Rheinland-Pfalz",
-    LeistungText: "Lieferung von Büroausstattung für Landtagsgebäude",
-    Ausführungsort: "Mainz",
-    Ausführungsfrist: "2025-10-20",
-    Fristen: { Angebotsfrist: "2025-08-20", Bindefrist: "2026-02-20" },
-    type: "Lieferleistungen",
-  },
-];
-
-// Datos de la sección "Was bieten wir Ihnen?"
-const features = [
+export const features = [
   {
     title: "Ausschreibungsrecherche",
     description:
@@ -201,91 +116,11 @@ const partners = [
 // backend --------------------------------------------------------------------------------------------------------------------------------------------------------/
 
 function App() {
-  // const [mobileOpen, setMobileOpen] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [profileOpen, setProfileOpen] = useState(false);
-
-  // const handleLogin = () => {
-  //   // cerrar menú de móvil, submenú, etc. si quieres
-  //   setMobileOpen(false);
-  //   setProfileOpen(false);
-  //   setIsLoggedIn(true);
-  // };
-  // const handleLogout = () => {
-  //   setIsLoggedIn(false);
-  //   setProfileOpen(false);
-  // };
-
   return (
     <>
-      {<Header />}
-      {<SearchSection />}
-
-      {/* Offers Section */}
-      <section className="offers">
-        <div className="container offers__inner">
-          <h2 className="offers__heading">Aktuelle Ausschreibungen</h2>
-          <div className="offers__grid">
-            {offers.map((offer, index) => (
-              <div key={index} className="offer-card">
-                <div className="offer-card__content">
-                  <h3 className="offer-card__auftraggeber">
-                    {offer.auftraggeber}
-                  </h3>
-                  <p className="offer-card__leistung">{offer.LeistungText}</p>
-                  <p className="offer-card__ort">
-                    <strong>Ort:</strong> {offer.Ausführungsort}
-                  </p>
-                  <ul className="offer-card__fristen">
-                    <li>
-                      <strong>Ausschreibungsfrist:</strong>{" "}
-                      {new Date(offer.Fristen.Angebotsfrist).toLocaleDateString(
-                        "de-DE"
-                      )}
-                    </li>
-                    <li>
-                      <strong>Bindefrist:</strong>{" "}
-                      {new Date(offer.Fristen.Bindefrist).toLocaleDateString(
-                        "de-DE"
-                      )}
-                    </li>
-                    <li>
-                      <strong>AUSF bis:</strong>{" "}
-                      {new Date(offer.Ausführungsfrist).toLocaleDateString(
-                        "de-DE"
-                      )}
-                    </li>
-                  </ul>
-                  <div className="offer-card__links">
-                    <a href="#details" className="offer-card__link">
-                      Details
-                    </a>
-                    <a href="#bewerben" className="offer-card__link">
-                      Bewerben
-                    </a>
-                    <a href="#empfehlen" className="offer-card__link">
-                      Empfehlen
-                    </a>
-                  </div>
-                </div>
-                <div className="offer-card__date-box">
-                  <span className="offer-card__date-day">
-                    {new Date(offer.Fristen.Angebotsfrist)
-                      .getDate()
-                      .toString()
-                      .padStart(2, "0")}
-                  </span>
-                  <span className="offer-card__date-month">
-                    {new Date(offer.Fristen.Angebotsfrist)
-                      .toLocaleString("de-DE", { month: "short" })
-                      .toUpperCase()}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Header />
+      <SearchSection />
+      <OffersSection />
 
       {/* Info Section--------------------------------------------- */}
       {/* Unsere Portale */}
