@@ -44,8 +44,6 @@
     padding: 0 0.75rem;
 }
 
-
-
 /* Carousel Navigation */
 .carousel__nav {
     position: absolute;
@@ -97,13 +95,21 @@
     }
 
     .offers__show-more {
-        display: block;
-        margin: 1rem auto 0;
+        display: flex;
         background: none;
         border: none;
-        color: #6fbf41;
+        color: #003a63;
         font-weight: bold;
         cursor: pointer;
+        justify-self: end;
+    }
+
+    .offers__heading {
+        font-size: 2rem;
+        color: #003a63;
+        margin: 0;
+        padding: 2rem 0 1rem 0;
+        justify-self: flex-start;
     }
 }
 
@@ -118,23 +124,16 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    height: 30rem;
+    height: auto;
     align-items: center;
 
-}
-
-@media (min-width: 768px) {
-    .offer-card {
-        flex-direction: row;
-        height: 20rem;
-
-    }
 }
 
 .offer-card__content {
     padding: 1rem;
     flex: 1;
     align-self: center;
+    align-content: center;
 }
 
 .offer-card__auftraggeber {
@@ -166,14 +165,18 @@
 
 .offer-card__links {
     display: flex;
-    gap: 1rem;
-    margin-top: auto;
     border-top: 1px solid #f0f0f0;
-    padding-top: 1rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    justify-content: space-evenly;
+    width: 100%;
+    background: #003a63;
+    border-radius: 5px;
+    color: #ffffff;
 }
 
 .offer-card__link {
-    color: #003a63;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
@@ -181,28 +184,7 @@
 
 .offer-card__link:hover {
     color: #6fbf41;
-    text-decoration: underline;
-}
-
-.offer-card__date-box {
-    background: #003a63;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    justify-self: end;
-    padding: 1rem;
-    width: 60px;
-}
-
-.offer-card__date-day {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.offer-card__date-month {
-    font-size: 0.9rem;
+    text-decoration: none;
 }
 
 .offers__grid--mobile ul,
@@ -212,8 +194,16 @@
     list-style: none;
 }
 
+@media (min-width: 768px) {
+    .offer-card {
+        flex-direction: column;
+        height: 20rem;
+    }
+}
+
+
 @media (min-width: 1024px) {
     .offers__slide {
-        flex: 0 0 calc((100% - 16rem) / 3);
+        flex: 0 0 calc((100% - 2rem) / 3);
     }
 }

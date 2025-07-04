@@ -1,38 +1,58 @@
-import React, { useState, useEffect } from "react";
 import "./Offers.css";
-import { offers } from "../../data/offers.js";
+import React, { useState, useEffect, useRef } from "react";
+import { offers as offersData } from "../../data/offers";
 
 export const OffersSection = () => {
-  // Ordenamos ofertas por fecha de publicación descendiente
-  const sorted = [...offers].sort(
+  const sortedOffers = [...offersData].sort(
     (a, b) => new Date(b.fecha) - new Date(a.fecha)
   );
 
+  // Configuración de límite por dispositivo
+  const desktopLimit = 8;
+  const hasMoreDesktop = sortedOffers.length > desktopLimit;
+  const desktopOffers = sortedOffers.slice(0, desktopLimit);
+
+  // Mobile vs Desktop state
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [showAllMobile, setShowAllMobile] = useState(false);
-  const [current, setCurrent] = useState(0);
+  const mobileOffers = showAllMobile ? sortedOffers : sortedOffers.slice(0, 3);
 
-  // Listener para actualizar isMobile
   useEffect(() => {
-    const onResize = () => setIsMobile(window.innerWidth < 768);
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Determinar ofertas a mostrar según dispositivo
-  const mobileOffers = showAllMobile ? sorted : sorted.slice(0, 3);
-  // En desktop, usamos todas las ofertas en carousel
-  const desktopOffers = sorted;
+  // Carousel desktop
+  const trackRef = useRef(null);
+  const viewportRef = useRef(null);
+  const [current, setCurrent] = useState(0);
+  const [slideWidth, setSlideWidth] = useState(0);
+  const [maxIndex, setMaxIndex] = useState(0);
 
-  // Handlers carousel desktop
-  const prev = () => setCurrent((idx) => Math.max(idx - 1, 0));
-  const next = () =>
-    setCurrent((idx) => Math.min(idx + 1, desktopOffers.length - 1));
+  // Calcule slideWidth and maxIndex
+  useEffect(() => {
+    if (!trackRef.current || !viewportRef.current) return;
+    const slideElem = trackRef.current.children[0];
+    if (!slideElem) return;
+    const computed = getComputedStyle(trackRef.current);
+    const gap = parseFloat(computed.gap) || 0;
+    const sw = slideElem.getBoundingClientRect().width + gap;
+    setSlideWidth(sw);
+    const vw = viewportRef.current.offsetWidth;
+    const totalW = trackRef.current.scrollWidth;
+    const maxOffset = totalW - vw;
+    setMaxIndex(Math.ceil(maxOffset / sw));
+    setCurrent((c) => Math.min(c, Math.ceil(maxOffset / sw)));
+  }, [desktopOffers.length]);
+
+  const prev = () => setCurrent((i) => Math.max(i - 1, 0));
+  const next = () => setCurrent((i) => Math.min(i + 1, maxIndex));
 
   return (
     <section className="offers">
       <div className="container offers__inner">
-        <h2 className="offers__heading">Neue Ausschreibungen</h2>
+        <h2 className="offers__heading">Aktuelle Ausschreibungen</h2>
 
         {isMobile ? (
           <>
@@ -59,12 +79,13 @@ export const OffersSection = () => {
             >
               ‹
             </button>
-
-            {/* Viewport: aquí recortamos todo lo que sobresalga */}
-            <div className="offers__viewport">
+            <div className="offers__viewport" ref={viewportRef}>
               <div
                 className="offers__track"
-                style={{ transform: `translateX(-${current * 100}%)` }}
+                ref={trackRef}
+                style={{
+                  transform: `translateX(-${current * slideWidth}px)`,
+                }}
               >
                 {desktopOffers.map((offer, i) => (
                   <div className="offers__slide" key={i}>
@@ -73,14 +94,18 @@ export const OffersSection = () => {
                 ))}
               </div>
             </div>
-
             <button
               className="carousel__nav carousel__nav--next"
               onClick={next}
-              disabled={current === desktopOffers.length - 1}
+              disabled={current >= maxIndex}
             >
               ›
             </button>
+            {!isMobile && current >= maxIndex && hasMoreDesktop && (
+              <a href="#showMore" className="offers__show-more-desktop">
+                Mehr sehen
+              </a>
+            )}
           </div>
         )}
       </div>
@@ -88,7 +113,6 @@ export const OffersSection = () => {
   );
 };
 
-// Subcomponente para tarjeta de oferta
 const OfferCard = ({ offer }) => (
   <div className="offer-card">
     <div className="offer-card__content">
@@ -111,27 +135,17 @@ const OfferCard = ({ offer }) => (
           {new Date(offer.Ausführungsfrist).toLocaleDateString("de-DE")}
         </li>
       </ul>
-      <div className="offer-card__links">
-        <a href="#details" className="offer-card__link">
-          Details
-        </a>
-        <a href="#bewerben" className="offer-card__link">
-          Bewerben
-        </a>
-        <a href="#empfehlen" className="offer-card__link">
-          Empfehlen
-        </a>
-      </div>
     </div>
-    <div className="offer-card__date-box">
-      <span className="offer-card__date-day">
-        {new Date(offer.fecha).getDate().toString().padStart(2, "0")}
-      </span>
-      <span className="offer-card__date-month">
-        {new Date(offer.fecha)
-          .toLocaleString("de-DE", { month: "short" })
-          .toUpperCase()}
-      </span>
+    <div className="offer-card__links">
+      <a href="#details" className="offer-card__link">
+        Details
+      </a>
+      <a href="#bewerben" className="offer-card__link">
+        Bewerben
+      </a>
+      <a href="#empfehlen" className="offer-card__link">
+        Empfehlen
+      </a>
     </div>
   </div>
 );

@@ -50,6 +50,7 @@
 }
 
 .search__toggle-button {
+    display: flex;
     background: rgba(243, 238, 238, 0.5);
     border: none;
     text-decoration: none;
@@ -60,6 +61,12 @@
     margin-top: 0.5rem;
     padding: 0.5rem 0.25rem;
     border-radius: 5px;
+    justify-self: center;
+}
+
+.search__toggle-button>svg {
+    align-self: center;
+    justify-self: center;
 }
 
 .search__advanced {

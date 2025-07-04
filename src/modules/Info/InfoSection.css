@@ -112,32 +112,53 @@
 
 /* —— Partners Section —— */
 .partners {
-    padding: 1rem 0;
     background: #f1f1f1;
+    padding: 4rem 0;
 }
 
 .partners__inner {
-    text-align: center;
+    max-width: 1140px;
+    margin: 0 auto;
 }
 
 .partners__heading {
     font-size: 2rem;
     color: #003a63;
+    margin-top: 0;
     margin-bottom: 2rem;
 }
 
-.partners__grid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 2rem;
+.partners__viewport {
+    overflow: hidden;
+    position: relative;
 }
 
+.partners__track {
+    display: flex;
+    gap: 2rem;
+    animation: scroll-left 20s linear infinite;
+}
+
+/* single logo */
 .partners__logo {
+    flex: 0 0 auto;
     background: #fff;
     border: 1px solid #ddd;
     padding: 1rem 2rem;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animation */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }

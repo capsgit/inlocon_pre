@@ -5,6 +5,8 @@ import { partners } from "../../data/partners.js";
 import { features } from "../../data/features.js";
 
 export const InfoSection = () => {
+  const logos = [...partners, ...partners];
+
   return (
     <>
       {/* Unsere Portale */}
@@ -19,11 +21,27 @@ export const InfoSection = () => {
             {portals.map((portal, index) => (
               <div key={index} className="portals__card">
                 <a href={portal.url} className="portals__card-link">
-                  <h3 className="portals__card-title">{portal.title}</h3>
+                  <h1 className="portals__card-title">{portal.title}</h1>
                   <p className="portals__card-desc">{portal.description}</p>
                 </a>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Unsere Partners */}
+      <section className="partners">
+        <div className="container partners__inner">
+          <h1 className="partners__heading">Unsere Partners</h1>
+          <div className="partners__viewport">
+            <div className="partners__track">
+              {logos.map((p, i) => (
+                <div className="partners__logo" key={i}>
+                  <img src={p.logo} alt={p.name} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -58,20 +76,6 @@ export const InfoSection = () => {
               <div key={i} className="metrics__item">
                 <span className="metrics__value">{m.value}</span>
                 <span className="metrics__label">{m.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Unsere Partner */}
-      <section className="partners">
-        <div className="container">
-          <h2 className="partners__heading">Unsere Partner</h2>
-          <div className="partners__grid">
-            {partners.map((partner, index) => (
-              <div key={index} className="partners__logo">
-                <img src={partner.logo} alt={partner.name} />
               </div>
             ))}
           </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import "./SearchSection.css";
 
 import { portals } from "../../data/portals.js";
@@ -79,7 +80,15 @@ export const SearchSection = () => {
             className="search__toggle-button"
             onClick={() => setShowAdvanced((prev) => !prev)}
           >
-            {showAdvanced ? "Suchoptionen ausblenden" : "Weitere Suchoptionen"}
+            {showAdvanced ? (
+              <>
+                Suchoptionen ausblenden <ChevronUp size={16} />
+              </>
+            ) : (
+              <>
+                Weitere Suchoptionen <ChevronDown size={16} />
+              </>
+            )}
           </button>
         </div>
       </form>
