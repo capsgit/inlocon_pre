@@ -1,30 +1,113 @@
 .offers {
     background: #f9f9f9;
-    padding: 4rem 0;
 }
 
 .offers__inner {
+    max-width: 1140px;
+    margin: 0 auto;
     text-align: center;
 }
 
 .offers__heading {
     font-size: 2rem;
     color: #003a63;
-    margin-bottom: 2rem;
+    margin: 0;
+    padding: 2rem 0 0rem 0;
+    justify-self: flex-start;
 }
 
-.offers__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+/* ————— Carrusel Desktop ————— */
+.offers__carousel {
+    position: relative;
+    margin: 0 auto;
+    padding: 2rem 0;
+    max-width: 1140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@media (min-width: 768px) {
-    .offers__grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.offers__viewport {
+    overflow: hidden;
+    width: 100%;
+}
+
+.offers__track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.offers__slide {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    padding: 0 0.75rem;
+}
+
+
+
+/* Carousel Navigation */
+.carousel__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 50%;
+    background: #6fbf41;
+    color: #fff;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    z-index: 2;
+}
+
+.carousel__nav--prev {
+    left: -50px;
+}
+
+.carousel__nav--next {
+    right: -50px;
+}
+
+.carousel__nav:disabled {
+    opacity: 0.6;
+    background-color: grey;
+    cursor: default;
+}
+
+.carousel__nav:hover:not(:disabled) {
+    background: #5aa835;
+}
+
+/* ————— Fallback Móvil ————— */
+@media (max-width: 767px) {
+    .offers__carousel {
+        display: none;
+    }
+
+    .offers__grid--mobile {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .offers__show-more {
+        display: block;
+        margin: 1rem auto 0;
+        background: none;
+        border: none;
+        color: #6fbf41;
+        font-weight: bold;
+        cursor: pointer;
     }
 }
 
+/* ————— Offer Card ————— */
 .offer-card {
     display: flex;
     flex-direction: column;
@@ -34,25 +117,30 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    transition: box-shadow 0.2s;
     overflow: hidden;
+    height: 30rem;
+    align-items: center;
+
 }
 
 @media (min-width: 768px) {
     .offer-card {
         flex-direction: row;
+        height: 20rem;
+
     }
 }
 
 .offer-card__content {
-    padding: 1.5rem;
+    padding: 1rem;
     flex: 1;
+    align-self: center;
 }
 
 .offer-card__auftraggeber {
     font-size: 1.2rem;
     color: #003a63;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0 0.5rem;
 }
 
 .offer-card__leistung {
@@ -103,8 +191,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    justify-self: end;
     padding: 1rem;
-    min-width: 80px;
+    width: 60px;
 }
 
 .offer-card__date-day {
@@ -114,4 +203,17 @@
 
 .offer-card__date-month {
     font-size: 0.9rem;
+}
+
+.offers__grid--mobile ul,
+.offer-card__fristen {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media (min-width: 1024px) {
+    .offers__slide {
+        flex: 0 0 calc((100% - 16rem) / 3);
+    }
 }

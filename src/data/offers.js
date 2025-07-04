@@ -6,6 +6,7 @@ export const offers = [
     Ausführungsfrist: "2025-10-15",
     Fristen: { Angebotsfrist: "2025-08-01", Bindefrist: "2026-01-15" },
     type: "Bauleistungen",
+    fecha: "2025-06-15",
   },
   {
     auftraggeber: "Deutsche Bahn AG",
@@ -14,6 +15,7 @@ export const offers = [
     Ausführungsfrist: "2025-12-01",
     Fristen: { Angebotsfrist: "2025-09-15", Bindefrist: "2026-03-01" },
     type: "Technische Ausrüstung",
+    fecha: "2025-06-15",
   },
   {
     auftraggeber: "Landkreis München",
@@ -22,6 +24,7 @@ export const offers = [
     Ausführungsfrist: "2025-11-20",
     Fristen: { Angebotsfrist: "2025-09-30", Bindefrist: "2026-02-20" },
     type: "Planungsleistungen",
+    fecha: "2025-06-15",
   },
   {
     auftraggeber: "Universität Hamburg",
@@ -30,6 +33,7 @@ export const offers = [
     Ausführungsfrist: "2025-09-10",
     Fristen: { Angebotsfrist: "2025-07-25", Bindefrist: "2026-01-10" },
     type: "Lieferleistungen",
+    fecha: "2025-06-15",
   },
   {
     auftraggeber: "Einwohnerstadt Köln",
@@ -38,6 +42,7 @@ export const offers = [
     Ausführungsfrist: "2025-08-30",
     Fristen: { Angebotsfrist: "2025-07-01", Bindefrist: "2025-12-31" },
     type: "Facility Management",
+    fecha: "2025-06-30",
   },
   {
     auftraggeber: "Bundesministerium für Verkehr",
@@ -46,6 +51,7 @@ export const offers = [
     Ausführungsfrist: "2025-10-05",
     Fristen: { Angebotsfrist: "2025-08-10", Bindefrist: "2026-02-05" },
     type: "Beratungsleistungen",
+    fecha: "2025-06-30",
   },
   {
     auftraggeber: "Stadt Frankfurt",
@@ -54,6 +60,7 @@ export const offers = [
     Ausführungsfrist: "2025-09-25",
     Fristen: { Angebotsfrist: "2025-08-01", Bindefrist: "2026-01-25" },
     type: "Fahrzeugbeschaffung",
+    fecha: "2025-06-30",
   },
   {
     auftraggeber: "Land Hessen",
@@ -62,6 +69,7 @@ export const offers = [
     Ausführungsfrist: "2025-11-01",
     Fristen: { Angebotsfrist: "2025-09-10", Bindefrist: "2026-04-01" },
     type: "Bauleistungen",
+    fecha: "2025-07-04",
   },
   {
     auftraggeber: "Stadt Nürnberg",
@@ -70,6 +78,7 @@ export const offers = [
     Ausführungsfrist: "2025-07-31",
     Fristen: { Angebotsfrist: "2025-06-15", Bindefrist: "2025-12-31" },
     type: "IT-Services",
+    fecha: "2025-07-04",
   },
   {
     auftraggeber: "Land Rheinland-Pfalz",
@@ -78,5 +87,6 @@ export const offers = [
     Ausführungsfrist: "2025-10-20",
     Fristen: { Angebotsfrist: "2025-08-20", Bindefrist: "2026-02-20" },
     type: "Lieferleistungen",
+    fecha: "2025-07-04",
   },
 ];

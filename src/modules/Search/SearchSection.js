@@ -12,7 +12,7 @@ export const SearchSection = () => {
   };
 
   return (
-    <section className="search">
+    <section className="search container">
       <form className="search__form" onSubmit={handleSearch}>
         {!showAdvanced ? (
           <div className="search__main">

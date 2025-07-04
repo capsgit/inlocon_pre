@@ -1,6 +1,6 @@
 /* —— Our Portals Section —— */
 .portals {
-    padding: 4rem 0;
+    padding: 1rem 0;
     background: #fff;
 }
 
@@ -35,7 +35,7 @@
 
 /* —— What We Offer Section —— */
 .offer {
-    padding: 4rem 0;
+    padding: 1rem 0;
     background: #fefefe;
 }
 
@@ -77,7 +77,7 @@
 /* —— Metrics Section —— */
 .metrics {
     background: #fff;
-    padding: 4rem 0;
+    padding: 1rem 0;
 }
 
 .metrics__inner {
@@ -112,7 +112,7 @@
 
 /* —— Partners Section —— */
 .partners {
-    padding: 4rem 0;
+    padding: 1rem 0;
     background: #f1f1f1;
 }
 

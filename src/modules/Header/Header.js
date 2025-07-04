@@ -16,7 +16,7 @@ export const Header = ({ isLoggedIn = false, onLogin, onLogout }) => {
   const toggleProfile = () => setProfileOpen((open) => !open);
 
   return (
-    <header className="header">
+    <header className="container header">
       <div className="header__inner">
         <img
           src="assets/images/svg/Logo-downloaded.png"
