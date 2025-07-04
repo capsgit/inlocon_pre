@@ -1,29 +1,54 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { User } from "lucide-react";
 import "./Header.css";
 
-// Array de enlaces de navegación
 const navItems = [
   { label: "Projektinfo", href: "#projectInformation" },
   { label: "Portalen", href: "#portals" },
   { label: "Blog", href: "#blog" },
 ];
 
-export const Header = ({ isLoggedIn = false, onLogin, onLogout }) => {
+export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const headerRef = useRef(null);
 
+  const handleLogin = () => setIsLoggedIn(true);
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setProfileOpen(false);
+  };
   const toggleMobile = () => setMobileOpen((open) => !open);
   const toggleProfile = () => setProfileOpen((open) => !open);
 
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        setMobileOpen(false);
+        setProfileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <header className="container header">
+    <header ref={headerRef} className="container header">
       <div className="header__inner">
         <img
           src="assets/images/svg/Logo-downloaded.png"
-          alt="Inlocon Logo"
+          alt="Logo"
           className="header__logo"
         />
-
+        <button
+          className="header__toggle"
+          onClick={toggleMobile}
+          aria-label="Toggle navigation"
+        >
+          <img src="assets/icons/casa.png" alt="Menu" />
+        </button>
         <nav className="header__nav header__nav--desktop">
           <ul className="header__nav-list">
             {navItems.map((item) => (
@@ -33,67 +58,55 @@ export const Header = ({ isLoggedIn = false, onLogin, onLogout }) => {
             ))}
           </ul>
         </nav>
-
-        <button
-          className="header__toggle"
-          onClick={toggleMobile}
-          aria-expanded={mobileOpen}
-          aria-label="Hauptmenü umschalten"
-        >
-          <img src="assets/icons/casa.png" alt="" aria-hidden="true" />
-        </button>
-
-        {isLoggedIn ? (
-          <div className="header__profile">
-            <button
-              className="header__profile-btn"
-              onClick={toggleProfile}
-              aria-expanded={profileOpen}
-              aria-label="Profilmenü umschalten"
-            >
-              👤
-            </button>
-            {profileOpen && (
-              <ul className="header__submenu">
-                <li>
-                  <a href="#profile">Mein Profil</a>
-                </li>
-                <li>
-                  <a href="#messages">Nachrichten</a>
-                </li>
-                <li>
-                  <a href="#applications">Meine Anwendungen</a>
-                </li>
-                <li>
-                  <button onClick={onLogout}>Abmelden</button>
-                </li>
-              </ul>
-            )}
-          </div>
-        ) : (
-          <div className="header__actions">
-            <button
-              className="header__action header__action--primary"
-              onClick={onLogin}
-            >
-              Kostenlos testen
-            </button>
-            <button
-              className="header__action header__action--outline"
-              onClick={onLogin}
-            >
-              Anmelden
-            </button>
-          </div>
-        )}
-
+        <div className="header__actions">
+          {!isLoggedIn ? (
+            <>
+              <button
+                className="header__action header__action--primary"
+                onClick={handleLogin}
+              >
+                Kostenlos testen
+              </button>
+              <button
+                className="header__action header__action--link"
+                onClick={handleLogin}
+              >
+                Anmelden
+              </button>
+            </>
+          ) : (
+            <div className="header__profile">
+              <button
+                className="header__profile-btn"
+                onClick={toggleProfile}
+                aria-label="Profile menu"
+              >
+                <User size={35} />
+              </button>
+              {profileOpen && (
+                <ul className="header__submenu">
+                  <li>
+                    <a href="#profile">Mein Profil</a>
+                  </li>
+                  <li>
+                    <a href="#messages">Nachrichten</a>
+                  </li>
+                  <li>
+                    <a href="#applications">Meine Anwendungen</a>
+                  </li>
+                  <li>
+                    <button onClick={handleLogout}>Abmelden</button>
+                  </li>
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
         <nav
           className={`header__nav header__nav--mobile ${
             mobileOpen ? "open" : ""
           }`}
         >
-          {" "}
-          {/* Mobile nav */}
           <ul className="header__nav-list">
             {navItems.map((item) => (
               <li key={item.href}>

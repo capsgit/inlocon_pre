@@ -18,10 +18,18 @@ export const InfoSection = () => {
             Regionen.
           </p>
           <div className="portals__grid">
-            {portals.map((portal, index) => (
-              <div key={index} className="portals__card">
+            {portals.map((portal, idx) => (
+              <div
+                key={idx}
+                className="portals__card"
+                style={{
+                  backgroundImage: `url(${portal.img})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <h4 className="portals__card-title">{portal.title}</h4>
                 <a href={portal.url} className="portals__card-link">
-                  <h1 className="portals__card-title">{portal.title}</h1>
                   <p className="portals__card-desc">{portal.description}</p>
                 </a>
               </div>

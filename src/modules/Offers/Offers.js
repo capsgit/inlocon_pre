@@ -140,9 +140,11 @@ const OfferCard = ({ offer }) => (
       <a href="#details" className="offer-card__link">
         Details
       </a>
+      {"|"}
       <a href="#bewerben" className="offer-card__link">
         Bewerben
       </a>
+      {"|"}
       <a href="#empfehlen" className="offer-card__link">
         Empfehlen
       </a>

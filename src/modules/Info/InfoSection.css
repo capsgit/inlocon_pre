@@ -18,6 +18,7 @@
     font-size: 1rem;
     color: #555;
     margin-bottom: 2rem;
+    text-decoration: none;
 }
 
 .portals__grid {
@@ -31,6 +32,22 @@
     padding: 1.5rem;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.portals__card-link {
+    text-decoration: none;
+}
+
+.portals__card-title {
+    align-self: center;
+    justify-self: center;
+    text-decoration: none;
+    border: 5px;
+    padding: 0 0.5rem;
+    background-color: rgba(255, 255, 255, 0.856);
+    color: #003a63;
+    position: top;
+    text-align: center;
 }
 
 /* —— What We Offer Section —— */
