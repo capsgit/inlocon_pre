@@ -5,8 +5,6 @@ import { partners } from "../../data/partners.js";
 import { features } from "../../data/features.js";
 
 export const InfoSection = () => {
-  const logos = [...partners, ...partners];
-
   return (
     <>
       {/* Unsere Portale */}
@@ -41,13 +39,22 @@ export const InfoSection = () => {
       {/* Unsere Partners */}
       <section className="partners">
         <div className="container partners__inner">
-          <h1 className="partners__heading">Unsere Partners</h1>
+          <h2 className="partners__heading">Unsere Partner</h2>
           <div className="partners__viewport">
             <div className="partners__track">
-              {logos.map((p, i) => (
-                <div className="partners__logo" key={i}>
-                  <img src={p.logo} alt={p.name} />
-                </div>
+              {partners.map((p, i) => (
+                <a
+                  key={i}
+                  href={p.url}
+                  className="partners__logo"
+                  style={{
+                    backgroundImage: `url(${p.logo})`,
+                    backgroundSize: "contain",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                  }}
+                  aria-label={p.name}
+                />
               ))}
             </div>
           </div>

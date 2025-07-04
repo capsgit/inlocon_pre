@@ -158,15 +158,21 @@
 
 /* single logo */
 .partners__logo {
+    width: 120px;
+    height: 80px;
     flex: 0 0 auto;
-    background: #fff;
-    border: 1px solid #ddd;
-    padding: 1rem 2rem;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0 1rem;
+    transition: transform .3s;
+}
+
+.partners__logo:hover {
+    transform: scale(1.05);
+}
+
+.partners__logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 /* Animation */

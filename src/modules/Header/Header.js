@@ -4,7 +4,7 @@ import "./Header.css";
 
 const navItems = [
   { label: "Projektinfo", href: "#projectInformation" },
-  { label: "Portalen", href: "#portals" },
+  { label: "Portale", href: "#portals" },
   { label: "Blog", href: "#blog" },
 ];
 

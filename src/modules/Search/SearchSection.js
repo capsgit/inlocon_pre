@@ -93,8 +93,8 @@ export const SearchSection = () => {
         </div>
       </form>
       <p className="search__subtitle">
-        Öffentliche Ausschreibungen, Aufträge & Geschäftskontakte. Alles aus una
-        Quelle!
+        Öffentliche Ausschreibungen, Aufträge & Geschäftskontakte. Alles aus
+        eine Quelle!
       </p>
     </section>
   );

@@ -5,6 +5,13 @@ export const Footer = () => {
     <footer className="footer">
       <div className="container footer__inner">
         <div className="footer__col">
+          <ul>
+            <li>AGB</li>
+            <li>Datenschutz</li>
+            <li>Impressum</li>
+          </ul>
+        </div>
+        <div className="footer__col">
           <h3>Kontakt</h3>
           <p>
             Inlocon AG
@@ -15,14 +22,6 @@ export const Footer = () => {
             <br />
             Tel.: 0341/253479111
           </p>
-        </div>
-        <div className="footer__col">
-          <h3>Services</h3>
-          <ul>
-            <li>Ausschreibungsrecherche</li>
-            <li>Auftragssuche</li>
-            <li>Subunternehmer finden</li>
-          </ul>
         </div>
       </div>
       <div className="footer__bottom">
