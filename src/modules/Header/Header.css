@@ -9,7 +9,7 @@
 .header__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  margin: 0 5rem;
   padding: 0 1.5rem;
   gap: 1rem;
   flex-wrap: wrap;
@@ -123,6 +123,7 @@
   .header__inner {
     display: flex;
     align-items: center;
+    margin: 0px;
     justify-content: space-between;
     padding: 0.5rem 1rem;
     position: relative;
@@ -160,13 +161,16 @@
   }
 
   .header__nav--mobile.open {
+    display: inline-block;
+    flex-direction: row;
     max-height: 300px;
     padding: 0.5rem 0;
   }
 
   .header__nav--mobile .header__nav-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     gap: 1rem;
     padding: 0;

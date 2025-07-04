@@ -3,8 +3,8 @@ import "./Header.css";
 
 // Array de enlaces de navegación
 const navItems = [
+  { label: "Projektinfo", href: "#projectInformation" },
   { label: "Portalen", href: "#portals" },
-  { label: "Unternehmen", href: "#enterprise" },
   { label: "Blog", href: "#blog" },
 ];
 
