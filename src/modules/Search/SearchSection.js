@@ -8,6 +8,7 @@ export const SearchSection = () => {
   const [term, setTerm] = useState("");
   const [showAdvanced, setShowAdvanced] = useState(false);
 
+  const bgUrl = `${process.env.PUBLIC_URL}/assets/images/search_component_background.png`;
   const handleSearch = (e) => {
     e.preventDefault();
   };
@@ -15,9 +16,7 @@ export const SearchSection = () => {
   return (
     <section
       className="search container"
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/search_component_background.png)`,
-      }}
+      style={{ backgroundImage: `url(${bgUrl})` }}
     >
       <form className="search__form" onSubmit={handleSearch}>
         {!showAdvanced ? (
