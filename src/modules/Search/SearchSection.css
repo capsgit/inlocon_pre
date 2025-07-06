@@ -1,4 +1,5 @@
 .search {
+    background: url("https://capsgit.github.io/static/media/search_component_background.png") center/cover no-repeat;
     color: #fff;
     text-align: center;
     display: flex;
