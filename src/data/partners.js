@@ -1,7 +1,7 @@
 export const partners = [
   {
     name: "Deutsche Bahn",
-    logo: "inlocon_pre/assets/images/partners/db-logo.svg",
+    logo: "/inlocon_pre/assets/images/partners/db-logo.svg",
   },
   {
     name: "Knauf",
