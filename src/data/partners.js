@@ -2,75 +2,75 @@ export const partners = [
   { name: "Deutsche Bahn", logo: "/assets/images/partners/db-logo.svg" },
   {
     name: "Knauf",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/knauf.svg",
+    logo: "/inlocon_pre/assets/images/partners/knauf.svg",
   },
   {
     name: "Strabag",
     url: "https://…",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Strabag_SE_Logo_2008.svg",
+    logo: "/inlocon_pre/assets/images/partners/Strabag_SE_Logo_2008.svg",
   },
   {
     name: "Schindler",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Schindlerlogo.svg",
+    logo: "/inlocon_pre/assets/images/partners/Schindlerlogo.svg",
   },
   {
     name: "Siemens",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Siemens-logo.svg",
+    logo: "/inlocon_pre/assets/images/partners/Siemens-logo.svg",
   },
   {
     name: "Strabag",
     url: "https://…",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Strabag_SE_Logo_2008.svg",
+    logo: "/inlocon_pre/assets/images/partners/Strabag_SE_Logo_2008.svg",
   },
   {
     name: "Knauf",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/knauf.svg",
+    logo: "/inlocon_pre/assets/images/partners/knauf.svg",
   },
   {
     name: "Strabag",
     url: "https://…",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Strabag_SE_Logo_2008.svg",
+    logo: "/inlocon_pre/assets/images/partners/Strabag_SE_Logo_2008.svg",
   },
   {
     name: "Knauf",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/knauf.svg",
+    logo: "/inlocon_pre/assets/images/partners/knauf.svg",
   },
   {
     name: "Schindler",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Schindlerlogo.svg",
+    logo: "/inlocon_pre/assets/images/partners/Schindlerlogo.svg",
   },
   {
     name: "Siemens",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Siemens-logo.svg",
+    logo: "/inlocon_pre/assets/images/partners/Siemens-logo.svg",
   },
   {
     name: "Strabag",
     url: "https://…",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Strabag_SE_Logo_2008.svg",
+    logo: "/inlocon_pre/assets/images/partners/Strabag_SE_Logo_2008.svg",
   },
   {
     name: "Knauf",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/knauf.svg",
+    logo: "/inlocon_pre/assets/images/partners/knauf.svg",
   },
   {
     name: "Schindler",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Schindlerlogo.svg",
+    logo: "/inlocon_pre/assets/images/partners/Schindlerlogo.svg",
   },
   {
     name: "Siemens",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Siemens-logo.svg",
+    logo: "/inlocon_pre/assets/images/partners/Siemens-logo.svg",
   },
   {
     name: "Schindler",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Schindlerlogo.svg",
+    logo: "/inlocon_pre/assets/images/partners/Schindlerlogo.svg",
   },
   {
     name: "Knauf",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/knauf.svg",
+    logo: "/inlocon_pre/assets/images/partners/knauf.svg",
   },
   {
     name: "Siemens",
-    logo: "https://capsgit.github.io/inlocon_pre/assets/images/partners/Siemens-logo.svg",
+    logo: "/inlocon_pre/assets/images/partners/Siemens-logo.svg",
   },
   // { name: "EnBW", logo: "/assets/images/partners/enbw.png" },
   // { name: "Wisag", logo: "/assets/images/partners/wisag.png" },
