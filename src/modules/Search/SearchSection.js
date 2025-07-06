@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import "./SearchSection.css";
+
 import { portals } from "../../data/portals.js";
 import bg from "../../assets/images/search_component_background.png";
 
