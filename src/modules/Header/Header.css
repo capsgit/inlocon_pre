@@ -94,9 +94,11 @@
 }
 
 .header__profile-btn {
-  background: #003a63;
-  color: white;
-  border: #6fbf41 2px solid;
+  width: 50px;
+  height: 50px;
+  background: #6fbf41;
+  color: #003a63;
+  border: none;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -138,6 +140,11 @@
     height: 70px;
     position: absolute;
     left: 1rem;
+  }
+
+  .header__profile-btn {
+    width: 45px;
+    height: 45px;
   }
 
   .header__toggle {

@@ -3,7 +3,7 @@ import { User } from "lucide-react";
 import "./Header.css";
 
 const navItems = [
-  { label: "Projektinfo", href: "#projectInformation" },
+  { label: "Services", href: "#services" },
   { label: "Portale", href: "#portals" },
   { label: "Blog", href: "#blog" },
 ];

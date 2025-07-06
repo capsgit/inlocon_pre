@@ -7,7 +7,6 @@ export const OffersSection = () => {
     (a, b) => new Date(b.fecha) - new Date(a.fecha)
   );
 
-  // Configuración de límite por dispositivo
   const desktopLimit = 8;
   const hasMoreDesktop = sortedOffers.length > desktopLimit;
   const desktopOffers = sortedOffers.slice(0, desktopLimit);
@@ -114,38 +113,58 @@ export const OffersSection = () => {
 };
 
 const OfferCard = ({ offer }) => (
-  <div className="offer-card">
-    <div className="offer-card__content">
+  <div className="offer-card corporate">
+    <div className="offer-card__header">
       <h3 className="offer-card__auftraggeber">{offer.auftraggeber}</h3>
       <p className="offer-card__leistung">{offer.LeistungText}</p>
+    </div>
+
+    <div className="offer-card__details">
       <p className="offer-card__ort">
         <strong>Ort:</strong> {offer.Ausführungsort}
       </p>
-      <ul className="offer-card__fristen">
-        <li>
-          <strong>Ausschreibungsfrist:</strong>{" "}
-          {new Date(offer.Fristen.Angebotsfrist).toLocaleDateString("de-DE")}
-        </li>
-        <li>
-          <strong>Bindefrist:</strong>{" "}
-          {new Date(offer.Fristen.Bindefrist).toLocaleDateString("de-DE")}
-        </li>
-        <li>
-          <strong>AUSF bis:</strong>{" "}
-          {new Date(offer.Ausführungsfrist).toLocaleDateString("de-DE")}
-        </li>
-      </ul>
+      <div className="offer-card__fristen-table-wrapper">
+        <table className="offer-card__fristen-table">
+          <thead>
+            <tr>
+              <th>Frist</th>
+              <th>Datum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ausschreibungsfrist</td>
+              <td>
+                {new Date(offer.Fristen.Angebotsfrist).toLocaleDateString(
+                  "de-DE"
+                )}
+              </td>
+            </tr>
+            <tr>
+              <td>Bindefrist</td>
+              <td>
+                {new Date(offer.Fristen.Bindefrist).toLocaleDateString("de-DE")}
+              </td>
+            </tr>
+            <tr>
+              <td>Ausführungsende</td>
+              <td>
+                {new Date(offer.Ausführungsfrist).toLocaleDateString("de-DE")}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div className="offer-card__links">
-      <a href="#details" className="offer-card__link">
+
+    <div className="offer-card__footer">
+      <a href="#details" className="btn btn-outline">
         Details
       </a>
-      {"|"}
-      <a href="#bewerben" className="offer-card__link">
+      <a href="#bewerben" className="btn btn-primary">
         Bewerben
       </a>
-      {"|"}
-      <a href="#empfehlen" className="offer-card__link">
+      <a href="#empfehlen" className="btn btn-outline">
         Empfehlen
       </a>
     </div>
