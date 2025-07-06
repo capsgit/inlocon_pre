@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/inlocon_pre/static/css/main.d5cedab7.css",
+    "main.js": "/inlocon_pre/static/js/main.2cb4dc71.js",
+    "static/js/453.3ee9b566.chunk.js": "/inlocon_pre/static/js/453.3ee9b566.chunk.js",
+    "static/media/search_component_background.png": "/inlocon_pre/static/media/search_component_background.dc2dce18569d2bbf9334.png",
+    "index.html": "/inlocon_pre/index.html",
+    "main.d5cedab7.css.map": "/inlocon_pre/static/css/main.d5cedab7.css.map",
+    "main.2cb4dc71.js.map": "/inlocon_pre/static/js/main.2cb4dc71.js.map",
+    "453.3ee9b566.chunk.js.map": "/inlocon_pre/static/js/453.3ee9b566.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5cedab7.css",
+    "static/js/main.2cb4dc71.js"
+  ]
+}
