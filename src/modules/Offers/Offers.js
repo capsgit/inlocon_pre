@@ -1,5 +1,5 @@
 import "./Offers.css";
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { offers as offersData } from "../../data/offers";
 
 export const OffersSection = () => {
