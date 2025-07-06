@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import "./SearchSection.css";
-
 import { portals } from "../../data/portals.js";
+import bg from "../../assets/images/search_component_background.png";
 
 export const SearchSection = () => {
   const [term, setTerm] = useState("");
   const [showAdvanced, setShowAdvanced] = useState(false);
 
-  const bgUrl = `${process.env.PUBLIC_URL}/assets/images/search_component_background.png`;
   const handleSearch = (e) => {
     e.preventDefault();
   };
@@ -16,7 +15,7 @@ export const SearchSection = () => {
   return (
     <section
       className="search container"
-      style={{ backgroundImage: `url(${bgUrl})` }}
+      style={{ backgroundImage: `url(${bg})` }}
     >
       <form className="search__form" onSubmit={handleSearch}>
         {!showAdvanced ? (
