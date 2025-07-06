@@ -13,7 +13,12 @@ export const SearchSection = () => {
   };
 
   return (
-    <section className="search container">
+    <section
+      className="search container"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/search_component_background.png)`,
+      }}
+    >
       <form className="search__form" onSubmit={handleSearch}>
         {!showAdvanced ? (
           <div className="search__main">
