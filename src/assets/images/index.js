@@ -1,5 +1,3 @@
-// Portals IMG
-
 import fasKhan from "./fas-khan-WJyuzi6EUTs-unsplash.jpg";
 import mariaLupan from "./maria-lupan-XeRqsvi9qBc-unsplash.jpg";
 import tima from "./pexels-tima-miroshnichenko-6474202.jpg";
