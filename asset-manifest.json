@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/inlocon_pre/static/css/main.d5cedab7.css",
-    "main.js": "/inlocon_pre/static/js/main.fc4cb5a8.js",
+    "main.js": "/inlocon_pre/static/js/main.c8c604d6.js",
     "static/js/453.3ee9b566.chunk.js": "/inlocon_pre/static/js/453.3ee9b566.chunk.js",
     "static/media/search_component_background.png": "/inlocon_pre/static/media/search_component_background.dc2dce18569d2bbf9334.png",
     "index.html": "/inlocon_pre/index.html",
     "main.d5cedab7.css.map": "/inlocon_pre/static/css/main.d5cedab7.css.map",
-    "main.fc4cb5a8.js.map": "/inlocon_pre/static/js/main.fc4cb5a8.js.map",
+    "main.c8c604d6.js.map": "/inlocon_pre/static/js/main.c8c604d6.js.map",
     "453.3ee9b566.chunk.js.map": "/inlocon_pre/static/js/453.3ee9b566.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d5cedab7.css",
-    "static/js/main.fc4cb5a8.js"
+    "static/js/main.c8c604d6.js"
   ]
 }
