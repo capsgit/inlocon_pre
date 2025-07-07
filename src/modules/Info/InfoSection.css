@@ -23,13 +23,19 @@
 
 .portals__grid {
     display: grid;
+    justify-items: center;
+    align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
 }
 
 .portals__card {
     background: #f9f9f9;
+    justify-content: center;
+    align-content: center;
     padding: 1.5rem;
+    height: 120px;
+    width: 160px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
@@ -39,9 +45,9 @@
 }
 
 .portals__card-title {
+    text-decoration: none;
     align-self: center;
     justify-self: center;
-    text-decoration: none;
     border: 5px;
     padding: 0 0.5rem;
     background-color: rgba(255, 255, 255, 0.856);

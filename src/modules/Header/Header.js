@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { User } from "lucide-react";
 import "./Header.css";
+import LogoImg from "../../assets/logo/Logo-downloaded.png";
+import HomeIcon from "../../assets/icons/casa.png";
 
 const navItems = [
   { label: "Services", href: "#services" },
@@ -37,17 +39,13 @@ export const Header = () => {
   return (
     <header ref={headerRef} className="container header">
       <div className="header__inner">
-        <img
-          src="assets/images/svg/Logo-downloaded.png"
-          alt="Logo"
-          className="header__logo"
-        />
+        <img src={LogoImg} alt="Logo" className="header__logo" />
         <button
           className="header__toggle"
           onClick={toggleMobile}
           aria-label="Toggle navigation"
         >
-          <img src="assets/icons/casa.png" alt="Menu" />
+          <img src={HomeIcon} alt="Menu" />
         </button>
         <nav className="header__nav header__nav--desktop">
           <ul className="header__nav-list">

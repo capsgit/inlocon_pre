@@ -16,7 +16,11 @@ export const SearchSection = () => {
   return (
     <section
       className="search container"
-      style={{ backgroundImage: `url(${bg})` }}
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <form className="search__form" onSubmit={handleSearch}>
         {!showAdvanced ? (

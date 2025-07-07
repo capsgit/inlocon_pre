@@ -1,4 +1,6 @@
 import "./InfoSection.css";
+
+import { IMG } from "../../assets/images";
 import { metrics } from "../../data/metrics.js";
 import { portals } from "../../data/portals.js";
 import { partners } from "../../data/partners.js";
@@ -11,52 +13,49 @@ export const InfoSection = () => {
       <section className="portals" id="portals">
         <div className="container">
           <h2 className="portals__heading">Unsere Portale</h2>
-          <p className="portals__description">
-            Wir bieten spezialisierte Portale für verschiedene Branchen und
-            Regionen.
-          </p>
           <div className="portals__grid">
             {portals.map((portal, idx) => (
               <div
                 key={idx}
                 className="portals__card"
                 style={{
-                  backgroundImage: `url(${portal.img})`,
+                  backgroundImage: `url(${IMG[portal.img]})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
                 <h4 className="portals__card-title">{portal.title}</h4>
-                <a href={portal.url} className="portals__card-link">
-                  <p className="portals__card-desc">{portal.description}</p>
-                </a>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Unsere Partners */}
+      {/* Unsere Partner */}
       <section className="partners">
         <div className="container partners__inner">
           <h2 className="partners__heading">Unsere Partner</h2>
-          <div className="partners__viewport">
-            <div className="partners__track">
-              {partners.map((p, i) => (
+          <div className="partners__track">
+            {partners.map((p, i) => {
+              const bgUrl = process.env.PUBLIC_URL + p.logo;
+              return (
                 <a
                   key={i}
                   href={p.url}
                   className="partners__logo"
                   style={{
-                    backgroundImage: `url(${p.logo})`,
+                    backgroundImage: `url(${bgUrl})`,
                     backgroundSize: "contain",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
+                    width: "120px",
+                    height: "60px",
                   }}
                   aria-label={p.name}
+                  title={p.name}
                 />
-              ))}
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
